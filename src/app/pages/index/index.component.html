@@ -25,7 +25,7 @@
             (ionChange)="onCategoryChange()"
             placeholder="Beef"
             label="Search by category"
-            class="w-full rounded-lg text-black px-4">
+            class="w-full rounded-lg text-black px-4 bg-white">
             <ion-select-option
                 *ngFor="let category of categories"
                 [value]="category.strCategory">
@@ -33,7 +33,7 @@
             </ion-select-option>
         </ion-select>
 
-        <div *ngIf="errorMessage" class="error-message">
+        <div *ngIf="errorMessage" class="text-red-800 mt-4 text-center">
             {{ errorMessage }}
         </div>
     </div>
@@ -49,14 +49,14 @@
                         <ion-card-subtitle>{{ meal.category }}</ion-card-subtitle>
                     </ion-card-header>
                     <ion-card-content>
-                        <ion-button class="bg-lime-400" [routerLink]="['/details', meal.idMeal]" expand="full">View Details</ion-button>
+                        <ion-button [routerLink]="['/details', meal.idMeal]" expand="full">View Details</ion-button>
                     </ion-card-content>
                 </ion-card>
             </ion-col>
         </ion-row>
     </ion-grid>
 
-    <div *ngIf="!errorMessage && meals.length === 0" class="empty-state">
+    <div *ngIf="!errorMessage && meals.length === 0" class="text-center mt-12">
         No meals found.
     </div>
 
@@ -66,16 +66,3 @@
         </ion-fab-button>
     </ion-fab>
 </ion-content>
-
-<style>
-    .error-message {
-        color: red;
-        margin-top: 20px;
-    }
-
-    .empty-state {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-</style>

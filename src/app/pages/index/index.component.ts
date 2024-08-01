@@ -52,11 +52,14 @@ export class IndexPage implements OnInit {
   }
 
   onSearchChange() {
-    if (this.searchTerm) {
+    this.selectedCategory = null;
+    if (this.searchTerm && this.searchTerm.length >= 2) {
       this.mealService.getMealsByName(this.searchTerm).subscribe({
         next: (response) => {
           this.meals = response.meals || [];
-          this.searchHistoryService.addSearchTerm(this.searchTerm);
+          if (this.searchTerm != '' || this.searchTerm != null) {
+            this.searchHistoryService.addSearchTerm(this.searchTerm);
+          }
           this.errorMessage = null;
         },
         error: (error) => {
@@ -69,11 +72,11 @@ export class IndexPage implements OnInit {
   }
 
   onCategoryChange() {
+    this.searchTerm = '';
     if (this.selectedCategory) {
       this.mealService.getMealsByCategory(this.selectedCategory).subscribe({
         next: (response) => {
           this.meals = (response.meals || []).map(meal => ({ ...meal, category: this.selectedCategory }));
-          this.searchTerm = '';
           this.errorMessage = null;
         },
         error: (error) => {

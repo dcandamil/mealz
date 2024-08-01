@@ -20,20 +20,15 @@
         <p><strong>Area:</strong> {{ meal.strArea }}</p>
         <p><strong>Instructions:</strong></p>
         <p class="text-justify">{{ meal.strInstructions }}</p>
-        <p *ngIf="meal.strTags"><strong>Tags:</strong> {{ meal.strTags }}</p>
-        <!-- 
-        <h2 class="text-2xl font-bold mt-4">Ingredients</h2>
-        <ul class="list-disc list-inside">
-            <li *ngFor="let ingredient of ingredients">{{ ingredient }}</li>
-        </ul> -->
     </div>
 </ion-content>
 
-<ion-footer>
-    <ion-toolbar transparent>
-        <button class="bg-lime-500 w-full py-3" (click)="openModal()">See ingredients</button>
-    </ion-toolbar>
-</ion-footer>
+<button
+    class="absolute bottom-0 px-4 py-2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-lime-300 text-black font-medium w-48 rounded-md ion-activatable ripple-parent rounded-rectangle"
+    (click)="openModal()">
+    <ion-ripple-effect></ion-ripple-effect>
+    🍱 Ingredients
+</button>
 
 <ion-modal [isOpen]="isModalOpen" (willDismiss)="onWillDismiss($event)">
     <ng-template>

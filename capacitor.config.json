@@ -1,0 +1,6 @@
+{
+  "appId": "me.dcandamil.mealz",
+  "appName": "Mealz",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}

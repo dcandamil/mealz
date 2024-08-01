@@ -1,5 +1,8 @@
 <ion-header>
     <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
         <ion-title>
             Search History
         </ion-title>
@@ -7,7 +10,7 @@
 </ion-header>
 
 <ion-content>
-    <div *ngIf="errorMessage" class="error-message">
+    <div *ngIf="errorMessage" class="text-red-800 mt-4 text-center">
         {{ errorMessage }}
     </div>
 
@@ -17,23 +20,20 @@
         </ion-item>
     </ion-list>
 
-    <div *ngIf="!errorMessage && searchHistory.length === 0" class="empty-state">
+    <div *ngIf="!errorMessage && searchHistory.length === 0" class="text-center mt-12">
         No search history found.
     </div>
 
-    <ion-button expand="full" color="danger" (click)="clearHistory()">Clear History</ion-button>
+
 </ion-content>
 
-<style>
-    .error-message {
-        color: red;
-        margin-top: 20px;
-        text-align: center;
-    }
+<ion-footer>
+    <ion-toolbar color="transparent">
+        <ion-button expand="full" class="px-2" color="danger" (click)="clearHistory()">
+            <span class="font-bold">
+                Clear History
+            </span>
 
-    .empty-state {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-</style>
+        </ion-button>
+    </ion-toolbar>
+</ion-footer>
