@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Search History
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+    </div>
+
+    <ion-list *ngIf="!errorMessage && searchHistory.length > 0">
+        <ion-item *ngFor="let term of searchHistory" (click)="search(term)">
+            {{ term }}
+        </ion-item>
+    </ion-list>
+
+    <div *ngIf="!errorMessage && searchHistory.length === 0" class="empty-state">
+        No search history found.
+    </div>
+
+    <ion-button expand="full" color="danger" (click)="clearHistory()">Clear History</ion-button>
+</ion-content>
+
+<style>
+    .error-message {
+        color: red;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .empty-state {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+</style>
