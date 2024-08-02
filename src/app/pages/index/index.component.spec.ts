@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { IonicModule } from '@ionic/angular';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { of, throwError } from 'rxjs';
 import { IndexPage } from './index.component';
 import { MealService } from '../../services/meal.service';
@@ -21,7 +23,8 @@ describe('IndexPage', () => {
       declarations: [IndexPage],
       imports: [
         HttpClientTestingModule,
-        RouterTestingModule.withRoutes([])
+        RouterTestingModule.withRoutes([]),
+        IonicModule.forRoot()
       ],
       providers: [
         { provide: MealService, useValue: mealServiceSpy },
@@ -32,7 +35,8 @@ describe('IndexPage', () => {
             queryParams: of({ search: 'test' })
           }
         }
-      ]
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
 
     fixture = TestBed.createComponent(IndexPage);
